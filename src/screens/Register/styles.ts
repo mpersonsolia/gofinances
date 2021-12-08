@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-
 import { RFValue } from "react-native-responsive-fontsize";
 
 export const Container = styled.View`
@@ -28,9 +27,18 @@ export const Header = styled.View`
 
   background-color: ${({ theme }) => theme.colors.primary};
 `;
+
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   font-size: ${RFValue(18)}px;
 
   color: ${({ theme }) => theme.colors.shape};
+`;
+
+export const TransactionsTypes = styled.View`
+  margin-bottom: 16px;
+  margin-top: 16px;
+
+  flex-direction: row;
+  justify-content: space-between;
 `;
