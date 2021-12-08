@@ -1,7 +1,13 @@
 import styled from "styled-components/native";
 import { Feather } from "@expo/vector-icons";
-import { getStatusBarHeight } from "react-native-iphone-x-helper";
+import { FlatList, FlatListProps } from "react-native";
+import {
+  getBottomSpace,
+  getStatusBarHeight,
+} from "react-native-iphone-x-helper";
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
+
+import { DataListProps } from ".";
 
 export const Container = styled.View`
   flex: 1;
@@ -43,6 +49,28 @@ export const Photo = styled.Image`
 
   border-radius: 10px;
 `;
+
+export const Title = styled.Text`
+  margin-bottom: 16px;
+
+  font-size: ${RFValue(18)}px;
+  font-family: ${({ theme }) => theme.fonts.regular};
+`;
+
+export const Transactions = styled.View`
+  flex: 1%;
+  margin-top: ${RFPercentage(12)}px;
+  padding: 0 24px;
+`;
+
+export const TransactionList = styled(
+  FlatList as new (
+    props: FlatListProps<DataListProps>
+  ) => FlatList<DataListProps>
+).attrs({
+  showsVerticalScrollIndicator: false,
+  contentContainerStyle: { paddingBottom: 10 },
+})``;
 
 export const User = styled.View`
   margin-left: 17px;
