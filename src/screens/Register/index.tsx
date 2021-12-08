@@ -17,7 +17,7 @@ export function Register() {
         <Fields>
           <Input placeholder="Nome" />
           <Input placeholder="Preço" />
-          <TransactionTypeButton />
+          <TransactionTypeButton type="up" title="Income" />
         </Fields>
         <Button title="Enviar" />
       </Form>
