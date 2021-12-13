@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import { BorderlessButton } from "react-native-gesture-handler";
 import { Feather } from "@expo/vector-icons";
 import { FlatList, FlatListProps } from "react-native";
 import {
@@ -42,6 +43,8 @@ export const Icon = styled(Feather)`
 
   color: ${({ theme }) => theme.colors.secondary};
 `;
+
+export const LogoutButton = styled(BorderlessButton)``;
 
 export const Photo = styled.Image`
   height: ${RFValue(48)}px;
