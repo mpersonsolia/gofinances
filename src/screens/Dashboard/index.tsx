@@ -29,14 +29,12 @@ export interface DataListProps extends TransactionCardProps {
 }
 
 export function Dashboard() {
-  const [data, useData] = useState<DataListProps[]>([]);
+  const [data, setData] = useState<DataListProps[]>([]);
 
   async function loadTransactions() {
     const dataKey = "@gofinances:transactions";
     const response = await AsyncStorage.getItem(dataKey);
     const transactions = response ? JSON.parse(response) : [];
-
-    // const transactionsFormatted: DataListProps[] = transactions.map(item =>);
   }
 
   useEffect(() => {

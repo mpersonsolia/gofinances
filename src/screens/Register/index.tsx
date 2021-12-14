@@ -27,15 +27,16 @@ import {
 } from "./styles";
 
 interface FormData {
-  amount: string;
   name: string;
+  amount: string;
 }
 
 const schema = Yup.object().shape({
+  name: Yup.string().required("Nome é obrigatório"),
   amount: Yup.number()
     .typeError("Informe um valor numérico")
-    .positive("O valor não pode ser negativo"),
-  name: Yup.string().required("Nome é obrigatório!"),
+    .positive("O valor não pode ser negativo")
+    .required("O valor é obrigatório"),
 });
 
 export function Register() {
@@ -69,7 +70,7 @@ export function Register() {
   }
 
   async function handleRegister(form: FormData) {
-    if (!transactionType) return Alert.alert("Selecione o tipo da transição.");
+    if (!transactionType) return Alert.alert("Selecione o tipo da transação.");
 
     if (category.key === "category")
       return Alert.alert("Selecione a categoria.");
