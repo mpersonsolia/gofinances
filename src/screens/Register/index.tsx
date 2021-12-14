@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Alert, Keyboard, Modal, TouchableWithoutFeedback } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {
@@ -41,7 +41,6 @@ const schema = Yup.object().shape({
 export function Register() {
   const [transactionType, setTransactionType] = useState("");
   const [categoryModalOpen, setCategoryModalOpen] = useState(false);
-  const dataKey = "@gofinances:transactions";
 
   const [category, setCategory] = useState({
     key: "category",
@@ -79,12 +78,14 @@ export function Register() {
       id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
-      transactionType,
+      type: transactionType,
       category: category.key,
       date: new Date(),
     };
 
     try {
+      const dataKey = "@gofinances:transactions";
+
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];
       const dataFormatted = [...currentData, newTransaction];
@@ -104,14 +105,6 @@ export function Register() {
       Alert.alert("Não foi possível salvar.");
     }
   }
-
-  useEffect(() => {
-    async function loadData() {
-      const data = await AsyncStorage.getItem(dataKey);
-      console.log(JSON.parse(data!));
-    }
-    loadData();
-  }, []);
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
