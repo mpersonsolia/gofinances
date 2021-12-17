@@ -87,6 +87,7 @@ export function Register() {
     };
 
     try {
+      const dataKey = "@gofinances:transactions";
       const data = await AsyncStorage.getItem(dataKey);
       const currentData = data ? JSON.parse(data) : [];
 
@@ -129,7 +130,7 @@ export function Register() {
               control={control}
               placeholder="Preço"
               keyboardType="numeric"
-              error={errors.name && errors.amount.message}
+              error={errors.amount && errors.amount.message}
             />
 
             <TransactionsTypes>
